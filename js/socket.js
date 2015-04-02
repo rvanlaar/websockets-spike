@@ -11,7 +11,7 @@ function docentEventLog(eventType){
 	}
 }
 
-var docentSocket = new WebSocket(docentUri);
+var docentSocket = new ReconnectingWebSocket(docentUri);
 docentSocket.onopen = docentEventLog('onopen');
 docentSocket.onclose = docentEventLog('onclose');
 docentSocket.onmessage = docentEventLog('onmessage');
@@ -34,7 +34,7 @@ function digibordOnMessage(event) {
 	digibordEventLog(event);
 }
 
-var digibordSocket = new WebSocket(digibordUri);
+var digibordSocket = new ReconnectingWebSocket(digibordUri);
 digibordSocket.onopen = digibordEventLog('onopen');
 digibordSocket.onclose = digibordEventLog('onclose');
 digibordSocket.onmessage = digibordOnMessage;
